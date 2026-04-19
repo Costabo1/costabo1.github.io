@@ -187,15 +187,18 @@ sudo /usr/bin/facter --custom-dir /tmp
 
 ## 💥 Privilege Escalation Flow
 
-```mermaid
+<div class="mermaid">
 flowchart TD
     A[User: trivia] --> B[sudo facter --custom-dir /tmp]
     B --> C[Writable /tmp directory]
     C --> D[Drop malicious Ruby script]
     D --> E[facter executes script]
-    E --> F[exec('/bin/sh')]
+    E --> F[exec '/bin/sh']
     F --> G[Root Shell]
-```
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
 
 ---
 
