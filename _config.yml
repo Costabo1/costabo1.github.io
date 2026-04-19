@@ -1,5 +1,5 @@
 title: Costabo1 Security Portfolio
-theme: minima
+theme: jekyll-theme-chirpy
 #remote_theme: pages-themes/hacker@v0.2.0
 markdown: kramdown
 kramdown:
