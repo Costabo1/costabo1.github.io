@@ -13,8 +13,7 @@ Facts is an easy-difficulty machine involving:
 
 ## 🔍 Attack Path
 
-```mermaid
-
+<div class="mermaid">
 flowchart TD
     A[Nmap Scan] --> B[Web App Discovery]
     B --> C[Admin Panel Found]
@@ -30,7 +29,7 @@ flowchart TD
     L --> M[Privilege Escalation via sudo facter]
     M --> N[Root Shell]
     N --> O[Root Flag]
-   
+</div>
 ```
 
 ## 🌐 Host Mapping
