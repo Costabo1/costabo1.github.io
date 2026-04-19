@@ -29,7 +29,7 @@ flowchart TD
     L --> M[Privilege Escalation via sudo facter]
     M --> N[Root Shell]
     N --> O[Root Flag]
-   ...
+   
 ```
 
 ## 🌐 Host Mapping
