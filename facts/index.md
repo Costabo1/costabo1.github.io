@@ -15,14 +15,22 @@ Facts is an easy-difficulty machine involving:
 
 ```mermaid
 flowchart TD
-A[Nmap Scan] --> B[Web Enumeration]
-B --> C[Admin Panel Access]
-C --> D[Camaleon CVEs]
-D --> E[S3 Credentials Leak]
-E --> F[SSH Key Extraction]
-F --> G[User Access: trivia]
-G --> H[Privilege Escalation via facter]
-H --> I[Root Shell]
+A --> B
+flowchart TD
+    A[Nmap Scan] --> B[Web App Discovery]
+    B --> C[Admin Panel Found]
+    C --> D[User Registration]
+    D --> E[Mass Assignment Vulnerability]
+    E --> F[Admin Privilege Escalation]
+    F --> G[Arbitrary File Read]
+    G --> H[AWS Credentials Leak]
+    H --> I[S3 Bucket Access]
+    I --> J[SSH Private Key Exfiltration]
+    J --> K[SSH as trivia]
+    K --> L[User Flag]
+    L --> M[Privilege Escalation via sudo facter]
+    M --> N[Root Shell]
+    N --> O[Root Flag]
 
 ## 🌐 Host Mapping
 
