@@ -1,6 +1,6 @@
 # 🧠 HackTheBox – Facts
 
-## 🧭 Overview
+##  Overview
 
 Facts is an easy-difficulty machine involving:
 
