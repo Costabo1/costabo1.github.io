@@ -47,28 +47,6 @@ Target CMS identified as **Camaleon CMS**
 
 ---
 
-## 🔓 Attack Chain Overview
-
-```mermaid id="attack_chain_facts"
-flowchart TD
-    A[Nmap Scan] --> B[Web Application Discovery]
-    B --> C[Admin Panel Access]
-    C --> D[User Registration Abuse]
-    D --> E[Mass Assignment Vulnerability]
-    E --> F[Admin Privilege Escalation]
-    F --> G[Arbitrary File Read]
-    G --> H[AWS Credentials Exposure]
-    H --> I[S3 Bucket Access]
-    I --> J[SSH Key Exfiltration]
-    J --> K[SSH Access as trivia]
-    K --> L[User Flag]
-    L --> M[sudo facter Exploitation]
-    M --> N[Root Shell]
-    N --> O[Root Flag]
-```
-
----
-
 ## 👤 Initial Access – Admin Privilege Escalation
 
 A user account was created:
@@ -209,7 +187,7 @@ sudo /usr/bin/facter --custom-dir /tmp
 
 ## 💥 Privilege Escalation Flow
 
-```mermaid id="privesc_facts"
+```mermaid
 flowchart TD
     A[User: trivia] --> B[sudo facter --custom-dir /tmp]
     B --> C[Writable /tmp directory]
