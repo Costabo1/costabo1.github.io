@@ -1,5 +1,5 @@
 title: Costabo1 Portfolio
-theme: Midnight
+#theme: Midnight
 remote_theme: pages-themes/hacker@v0.2.0
 markdown: kramdown
 kramdown:
