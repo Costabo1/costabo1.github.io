@@ -14,6 +14,7 @@ Facts is an easy-difficulty machine involving:
 ## 🔍 Attack Path
 
 ```mermaid
+
 flowchart TD
     A[Nmap Scan] --> B[Web App Discovery]
     B --> C[Admin Panel Found]
@@ -199,7 +200,6 @@ flowchart TD
 
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
-
 ---
 
 ### 🧨 Exploit Payload
