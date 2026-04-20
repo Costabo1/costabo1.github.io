@@ -8,7 +8,7 @@ url: "https://costabo1.github.io"
 baseurl: "" 
 
 # Theme Settings
-remote_theme: pages-themes/modernist@v0.2.0
+remote_theme: pages-themes/midnight@v0.2.0
 github_username: costabo1
 
 # Build Settings
