@@ -9,7 +9,7 @@ Welcome to my penetration testing writeups and security research.
 
 ## 📂 HackTheBox Writeups
 
-- [Facts (Linux + Cloud + PrivEsc)](facts/123.md)
+- [Facts (Linux + Cloud + PrivEsc)](facts/index.md)
 - Silentium (Gogs + S3 + RCE chain)(Silentium.md)
 
 ## 🔍 About Me
