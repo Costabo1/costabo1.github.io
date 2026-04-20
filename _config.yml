@@ -1,12 +1,10 @@
 title: Costabo1 Portfolio
 description: Penetration testing writeups and security research
-
-theme: jekyll-theme-modernist
-
+remote_theme: pages-themes/modernist@v0.2.0
 markdown: kramdown
 kramdown:
   input: GFM
-
-# Optional info
 email: cu976733@gmail.com
 github_username: costabo1
+plugins:
+  - jekyll-remote-theme
