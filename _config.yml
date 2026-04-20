@@ -1,18 +1,12 @@
-ttitle: Costabo1 Portfolio
-remote_theme: andrewbanchich/forty-jekyll-theme
+title: Costabo1 Portfolio
+description: Penetration testing writeups and security research
+
+theme: jekyll-theme-modernist
+
 markdown: kramdown
 kramdown:
   input: GFM
-plugins:
-  - jekyll-remote-theme
 
-# Your info
+# Optional info
 email: cu976733@gmail.com
-description: Penetration testing writeups and security research
-
-# Social links (only ones you fill in will show)
 github_username: costabo1
-
-# Homepage tiles - pull from pages or posts
-tiles_source: pages
-tiles_count: 6
