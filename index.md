@@ -5,20 +5,23 @@ title: Costabo1 Portfolio
 
 <style>
 /* =========================
-   CYBER DASHBOARD THEME
+   GLOBAL CYBER THEME
    ========================= */
 
 body {
   background-color: #0b1220;
 }
 
-/* Profile image glow */
+/* =========================
+   PROFILE IMAGE
+   ========================= */
+
 .profile-img {
-  width: 150px;
-  height: 150px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #60a5fa;
+  border: 4px solid #60a5fa;
   box-shadow: 0 0 15px #60a5fa, 0 4px 15px rgba(0,0,0,0.4);
   transition: 0.3s ease;
 }
@@ -28,7 +31,10 @@ body {
   transform: scale(1.05);
 }
 
-/* Card layout */
+/* =========================
+   LAYOUT
+   ========================= */
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -36,23 +42,46 @@ body {
   margin-top: 20px;
 }
 
-/* Cyber glow cards */
-.card {
+/* =========================
+   HTB - CRIMSON RED THEME
+   ========================= */
+
+.card-htb {
   background: #111827;
-  border: 1px solid #2d3748;
+  border: 2px solid #2d3748;
   border-radius: 12px;
   padding: 16px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: 0.25s ease;
   box-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 
-/* Glow hover effect */
-.card:hover {
+.card-htb:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 15px #60a5fa, 0 0 30px rgba(96,165,250,0.4);
+  box-shadow: 0 0 15px rgb(220, 20, 60), 0 0 30px rgba(220,20,60,0.4);
 }
 
-/* Links */
+/* =========================
+   LETSDEFEND - CYAN THEME
+   ========================= */
+
+.card-ld {
+  background: #111827;
+  border: 2px solid #2d3748;
+  border-radius: 12px;
+  padding: 16px;
+  transition: 0.25s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+.card-ld:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 15px rgb(0, 255, 255), 0 0 30px rgba(0,255,255,0.4);
+}
+
+/* =========================
+   LINKS
+   ========================= */
+
 .card a {
   color: #60a5fa;
   text-decoration: none;
@@ -78,7 +107,8 @@ body {
 
 <div class="card-container">
 
-<div class="card">
+<!-- HTB SECTION -->
+<div class="card-htb">
 <h3>🧠 HackTheBox Writeups</h3>
 <ul>
 <li><a href="facts/index123.md">Facts (Linux + Cloud + PrivEsc)</a></li>
@@ -86,7 +116,8 @@ body {
 </ul>
 </div>
 
-<div class="card">
+<!-- LETSDEFEND SECTION -->
+<div class="card-ld">
 <h3>🔍 LetsDefend SOC Labs</h3>
 <ul>
 <li>Network Log Analysis</li>
@@ -94,7 +125,8 @@ body {
 </ul>
 </div>
 
-<div class="card">
+<!-- FOCUS AREA -->
+<div class="card-ld">
 <h3>⚙️ Focus Areas</h3>
 <ul>
 <li>Web Exploitation</li>
