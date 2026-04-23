@@ -44,8 +44,8 @@ title: Costabo1 Portfolio
   <img src="assets/images/mewSP.jpg" 
        alt="Profile Image" 
        style="
-         width: 150px;
-         height: 150px;
+         width: 400px;
+         height: 400px;
          border-radius: 50%;
          object-fit: cover;
          border: 3px solid #60a5fa;
