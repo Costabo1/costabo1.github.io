@@ -13,22 +13,67 @@ body {
 }
 
 /* =========================
-   PROFILE IMAGE
+   PROFILE IMAGE (SOC PULSE)
    ========================= */
 
 .profile-img {
-  width: 450px;
-  height: 450px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #60a5fa;
+  cursor: pointer;
+
+  /* Base glow */
   box-shadow: 0 0 15px #60a5fa, 0 4px 15px rgba(0,0,0,0.4);
-  transition: 0.3s ease;
+
+  /* Performance + animation */
+  will-change: transform, box-shadow;
+  animation: socPulse 2.5s infinite ease-in-out;
+  transition: all 0.3s ease;
 }
 
+/* Hover */
 .profile-img:hover {
-  box-shadow: 0 0 25px #60a5fa, 0 0 40px rgba(96,165,250,0.5);
-  transform: scale(1.05);
+  transform: scale(1.03);
+}
+
+/* CLICK → Neon Purple Alert */
+.profile-img:active {
+  animation: none; /* 🔑 stop pulse */
+  border-color: rgb(168, 85, 247);
+  box-shadow:
+    0 0 25px rgb(168, 85, 247),
+    0 0 50px rgba(168, 85, 247, 0.7),
+    0 0 80px rgba(168, 85, 247, 0.5);
+  transform: scale(0.97);
+}
+
+/* =========================
+   SOC PULSE ANIMATION
+   ========================= */
+
+@keyframes socPulse {
+  0% {
+    box-shadow:
+      0 0 10px #60a5fa,
+      0 0 20px rgba(96,165,250,0.3),
+      0 4px 15px rgba(0,0,0,0.4);
+  }
+
+  50% {
+    box-shadow:
+      0 0 25px #60a5fa,
+      0 0 50px rgba(96,165,250,0.6),
+      0 4px 15px rgba(0,0,0,0.4);
+  }
+
+  100% {
+    box-shadow:
+      0 0 10px #60a5fa,
+      0 0 20px rgba(96,165,250,0.3),
+      0 4px 15px rgba(0,0,0,0.4);
+  }
 }
 
 /* =========================
@@ -43,7 +88,7 @@ body {
 }
 
 /* =========================
-   HTB - CRIMSON RED THEME
+   HTB - CRIMSON RED
    ========================= */
 
 .card-htb {
@@ -57,11 +102,13 @@ body {
 
 .card-htb:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 15px rgb(220, 20, 60), 0 0 30px rgba(220,20,60,0.4);
+  box-shadow:
+    0 0 15px rgb(220, 20, 60),
+    0 0 30px rgba(220,20,60,0.4);
 }
 
 /* =========================
-   LETSDEFEND - CYAN THEME
+   LETSDEFEND - CYAN
    ========================= */
 
 .card-ld {
@@ -75,7 +122,9 @@ body {
 
 .card-ld:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 15px rgb(0, 255, 255), 0 0 30px rgba(0,255,255,0.4);
+  box-shadow:
+    0 0 15px rgb(0, 255, 255),
+    0 0 30px rgba(0,255,255,0.4);
 }
 
 /* =========================
@@ -107,7 +156,7 @@ body {
 
 <div class="card-container">
 
-<!-- HTB SECTION -->
+<!-- HTB -->
 <div class="card-htb">
 <h3>🧠 HackTheBox Writeups</h3>
 <ul>
@@ -116,7 +165,7 @@ body {
 </ul>
 </div>
 
-<!-- LETSDEFEND SECTION -->
+<!-- LETSDEFEND -->
 <div class="card-ld">
 <h3>🔍 LetsDefend SOC Labs</h3>
 <ul>
@@ -125,7 +174,7 @@ body {
 </ul>
 </div>
 
-<!-- FOCUS AREA -->
+<!-- FOCUS -->
 <div class="card-ld">
 <h3>⚙️ Focus Areas</h3>
 <ul>
