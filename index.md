@@ -38,13 +38,26 @@ title: Costabo1 Portfolio
 }
 </style>
 
-# 🛡️ Costabo1 Cybersecurity Dashboard
+# 🛡️ Costabo1 Portfolio
 
-> Welcome to my security research lab — covering penetration testing, malware analysis, and SOC investigations.
+<div style="text-align:center; margin: 20px 0;">
+  <img src="assets/images/mewSP.jpg" 
+       alt="Profile Image" 
+       style="
+         width: 150px;
+         height: 150px;
+         border-radius: 50%;
+         object-fit: cover;
+         border: 3px solid #60a5fa;
+         box-shadow: 0 0 15px #60a5fa, 0 4px 15px rgba(0,0,0,0.4);
+       ">
+</div>
+
+> Penetration testing writeups and security research
 
 ---
 
-## 📊 Featured Areas
+## 📊 Security Dashboard
 
 <div class="card-container">
 
@@ -82,8 +95,7 @@ title: Costabo1 Portfolio
 
 Security enthusiast focused on real-world attack simulation and defensive analysis.
 
-I work with:
-- 🧪 Offensive security labs (HTB, vulnerable apps)
-- 📡 SOC investigations (SIEM, logs, alerts)
+- 🧪 Offensive Security (HTB, labs)
+- 📡 SOC / SIEM investigations
 - ☁️ Cloud security research
-- 🐛 Malware and behavior analysis
+- 🐛 Malware behavior analysis
