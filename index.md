@@ -27,11 +27,11 @@ body {
 /* ================= PROFILE ================= */
 
 .profile-img {
-  width: 320px;
-  height: 320px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #60a5fa;
+  border: 5px solid 60a5fa#;
   cursor: pointer;
 
   box-shadow: 0 0 15px #60a5fa, 0 4px 15px rgba(0,0,0,0.4);
