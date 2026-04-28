@@ -25,32 +25,23 @@ Privilege escalation is achieved by abusing a misconfigured `sudo` rule involvin
 
 ---
 
-## 🧭 Attack Path Overview
+## 🧭 Attack Path (Interactive)
 
-```text
-Web Application (Camaleon CMS)
-        ↓
-Admin Registration Abuse
-        ↓
-Privilege Escalation (CMS Exploit)
-        ↓
-AWS Credentials Discovery
-        ↓
-S3 Bucket Access
-        ↓
-SSH Key Exfiltration
-        ↓
-User Access (SSH)
-        ↓
-Privilege Escalation (sudo facter)
-        ↓
-Root Access
+<ul>
+  <li><a href="#recon">🔍 Reconnaissance</a></li>
+  <li><a href="#web">🌐 Web Exploitation</a></li>
+  <li><a href="#cloud">☁️ Cloud Misconfiguration (AWS S3)</a></li>
+  <li><a href="#ssh">🔐 SSH Access</a></li>
+  <li><a href="#priv">⚡ Privilege Escalation</a></li>
+  <li><a href="#root">👑 Root Access</a></li>
+</ul>
+
 
 ## 🌐 Host Mapping
 
 ```bash
 echo "10.129.35.249 facts.htb" | sudo tee -a /etc/hosts
-```
+
 
 Discovered endpoints:
 
@@ -211,8 +202,7 @@ flowchart TD
     F --> G[Root Shell]
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>mermaid.initialize({startOnLoad:true});</script>
+
 ---
 
 ### 🧨 Exploit Payload
