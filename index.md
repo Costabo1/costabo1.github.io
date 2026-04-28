@@ -1,7 +1,8 @@
 ---
+
 layout: default
 title: Costabo1 Portfolio
----
+-------------------------
 
 <style>
 body {
@@ -31,7 +32,7 @@ body {
   height: 420px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid 60a5fa#;
+  border: 5px solid #60a5fa;
   cursor: pointer;
 
   box-shadow: 0 0 15px #60a5fa, 0 4px 15px rgba(0,0,0,0.4);
@@ -86,7 +87,7 @@ body {
   transition: 0.3s;
 }
 
-/* HTB (red) */
+/* HTB (crimson red) */
 .card-htb:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 15px rgb(220,20,60), 0 0 30px rgba(220,20,60,0.4);
@@ -96,6 +97,12 @@ body {
 .card-ld:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 15px rgb(0,255,255), 0 0 30px rgba(0,255,255,0.4);
+}
+
+/* NEW CARD (orange/yellow glow) */
+.card-lab:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 15px rgb(255,165,0), 0 0 30px rgba(255,165,0,0.5);
 }
 
 .card a {
@@ -122,6 +129,7 @@ body {
 </style>
 
 <!-- HERO -->
+
 <div class="hero">
   <img class="profile-img" src="assets/images/mewSP.jpg">
   <h1>🛡️ Costabo1</h1>
@@ -130,9 +138,10 @@ body {
 
 ---
 
-<!-- PORTFOLIO -->
+<!-- SECURITY BOARD -->
+
 <div class="section">
-<h2>📊 Portfolio</h2>
+<h2>📊 Security Board</h2>
 
 <div class="card-container">
 
@@ -152,12 +161,22 @@ body {
 </ul>
 </div>
 
+<div class="card card-lab">
+<h3>⚡ Research Lab</h3>
+<ul>
+<li>Custom Detection Models</li>
+<li>Automation Scripts</li>
+<li>Exploit Development (WIP)</li>
+</ul>
+</div>
+
 </div>
 </div>
 
 ---
 
 <!-- ABOUT -->
+
 <div class="section">
 <h2>🔎 About Me</h2>
 
