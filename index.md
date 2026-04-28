@@ -1,8 +1,8 @@
 ---
+
 layout: default
 title: Costabo1 Portfolio
----
-
+-------------------------
 
 <style>
 body {
@@ -11,7 +11,8 @@ body {
   text-align: center;
 }
 
-/* HERO */
+/* ================= HERO ================= */
+
 .hero {
   padding: 60px 20px 20px;
 }
@@ -24,7 +25,8 @@ body {
   color: #9ca3af;
 }
 
-/* PROFILE */
+/* ================= PROFILE ================= */
+
 .profile-img {
   width: 420px;
   height: 420px;
@@ -51,14 +53,73 @@ body {
     0 0 80px rgba(168, 85, 247, 0.5);
 }
 
-/* Pulse animation */
+/* Pulse */
 @keyframes socPulse {
   0% { box-shadow: 0 0 10px #60a5fa; }
   50% { box-shadow: 0 0 30px #60a5fa; }
   100% { box-shadow: 0 0 10px #60a5fa; }
 }
 
-/* SECTION */
+  /* ================= TERMINAL HEADER ================= */
+
+.terminal {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 16px;
+  color: #22c55e;
+  background: rgba(0,0,0,0.6);
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-top: 10px;
+  box-shadow: 0 0 10px rgba(34,197,94,0.4);
+}
+
+/* typing effect */
+.typing {
+  overflow: hidden;
+  border-right: 2px solid #22c55e;
+  white-space: nowrap;
+  width: 0;
+  animation:
+    typing 4s steps(40, end) forwards,
+    blink 0.8s infinite;
+}
+
+/* typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* cursor blink */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* ================= ICONS ================= */
+
+.icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  vertical-align: middle;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  transition: 0.3s;
+}
+
+.icon-htb { color: rgb(220,20,60); }   /* red */
+.icon-ld  { color: rgb(0,255,255); }   /* cyan */
+.icon-lab { color: rgb(255,165,0); }   /* orange */
+
+/* glow on hover */
+.card:hover .icon {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* ================= SECTION ================= */
+
 .section {
   padding: 60px 20px;
 }
@@ -67,7 +128,8 @@ body {
   margin-bottom: 20px;
 }
 
-/* CARDS */
+/* ================= CARDS ================= */
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -106,7 +168,8 @@ body {
   text-decoration: none;
 }
 
-/* SKILLS */
+/* ================= SKILLS ================= */
+
 .skills {
   display: flex;
   flex-wrap: wrap;
@@ -126,22 +189,40 @@ body {
 <!-- HERO -->
 
 <div class="hero">
-  <img class="profile-img" src="assets/images/mewSP.jpg" alt="Profile Image">
-  <h1>🛡️ Costabo1</h1>
-  <p>Penetration Testing • SOC Analysis • Malware Research</p>
+  <img class="profile-img" src="assets/images/mewSP.jpg" alt="Profile">
+  <h1>Costabo1</h1>
+ <div class="terminal">
+  <span class="typing">$ Power up the bass cannon...</span>
+</div>
+
+<p>Penetration Testing • SOC Analysis • Malware Research</p>
 </div>
 
 ---
 
-<!-- SECURITY BOARD -->
+<!-- SECURITY DASHBOARD -->
 
 <div class="section">
-<h2>📊 Security Board</h2>
+<h2>
+<svg class="icon" viewBox="0 0 24 24">
+  <rect x="3" y="3" width="7" height="7"></rect>
+  <rect x="14" y="3" width="7" height="4"></rect>
+  <rect x="14" y="9" width="7" height="12"></rect>
+  <rect x="3" y="12" width="7" height="9"></rect>
+</svg>
+Security Dashboard
+</h2>
 
 <div class="card-container">
 
 <div class="card card-htb">
-<h3>🧠 HackTheBox</h3>
+<h3>
+<svg class="icon icon-htb" viewBox="0 0 24 24">
+  <path d="M3 7l9-4 9 4-9 4-9-4z"></path>
+  <path d="M3 7v10l9 4 9-4V7"></path>
+</svg>
+HackTheBox
+</h3>
 <ul>
 <li><a href="facts/index123.md">Facts (Linux + PrivEsc)</a></li>
 <li><a href="Silentium.md">Silentium (RCE chain)</a></li>
@@ -149,7 +230,12 @@ body {
 </div>
 
 <div class="card card-ld">
-<h3>🔍 LetsDefend</h3>
+<h3>
+<svg class="icon icon-ld" viewBox="0 0 24 24">
+  <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"></path>
+</svg>
+LetsDefend
+</h3>
 <ul>
 <li>Network Log Analysis</li>
 <li>Dynamic Malware Analysis</li>
@@ -157,7 +243,14 @@ body {
 </div>
 
 <div class="card card-lab">
-<h3>⚡ Research Lab</h3>
+<h3>
+<svg class="icon icon-lab" viewBox="0 0 24 24">
+  <path d="M9 18h6"></path>
+  <path d="M10 22h4"></path>
+  <path d="M12 2a7 7 0 0 0-4 12c1 1 2 2 2 4h4c0-2 1-3 2-4a7 7 0 0 0-4-12z"></path>
+</svg>
+Research Lab
+</h3>
 <ul>
 <li>Custom Detection Models</li>
 <li>Automation Scripts</li>
@@ -173,7 +266,7 @@ body {
 <!-- ABOUT -->
 
 <div class="section">
-<h2>🔎 About Me</h2>
+<h2>About Me</h2>
 
 <p>
 Security enthusiast focused on real-world attack simulation and defensive analysis.
