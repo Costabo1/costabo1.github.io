@@ -1,42 +1,50 @@
+---
+layout: default
+title: "HTB - Facts"
+---
+
 # 🧠 HackTheBox – Facts
-
-##  Overview
-
-Facts is an easy-difficulty machine that demonstrates a multi-stage attack chain involving web exploitation, cloud misconfiguration, credential access, and privilege escalation.
-
-Initial access is obtained by identifying an exposed /admin/register endpoint on a Camaleon CMS 2.9.0 instance, which allows arbitrary user registration. A known vulnerability in the CMS is then exploited to escalate privileges and gain administrative access.
-
-During post-exploitation, AWS S3 credentials are discovered, leading to access to a misconfigured S3 bucket. This bucket contains an id_ed25519 SSH private key. The key’s passphrase is successfully cracked, enabling SSH access to the target system.
-
-Privilege escalation is achieved by abusing a misconfigured sudo rule involving the facter binary, allowing execution of commands with elevated privileges and resulting in full system compromise.
-
-- Web exploitation (Camaleon CMS 2.9.0)
-- Cloud misconfiguration (AWS S3)
-- SSH key extraction
-- Linux privilege escalation (facter abuse)
 
 ---
 
-## 🔍 Attack Path
+## 🎯 Objective
 
-<div class="mermaid">
-flowchart TD
-    A[Nmap Scan] --> B[Web App Discovery]
-    B --> C[Admin Panel Found]
-    C --> D[User Registration]
-    D --> E[Mass Assignment Vulnerability]
-    E --> F[Admin Privilege Escalation]
-    F --> G[Arbitrary File Read]
-    G --> H[AWS Credentials Leak]
-    H --> I[S3 Bucket Access]
-    I --> J[SSH Private Key Exfiltration]
-    J --> K[SSH as trivia]
-    K --> L[User Flag]
-    L --> M[Privilege Escalation via sudo facter]
-    M --> N[Root Shell]
-    N --> O[Root Flag]
-</div>
-```
+The objective of this machine is to gain initial access through a vulnerable web application, escalate privileges via cloud misconfiguration (AWS S3), and ultimately achieve root access through a Linux privilege escalation vector.
+
+---
+
+## 📌 Summary
+
+Facts is an easy-difficulty machine that demonstrates a multi-stage attack chain involving web exploitation, cloud misconfiguration, credential access, and privilege escalation.
+
+Initial access is obtained by identifying an exposed `/admin/register` endpoint on a Camaleon CMS 2.9.0 instance, allowing arbitrary user registration. A known vulnerability is then leveraged to escalate privileges and gain administrative access.
+
+During post-exploitation, AWS S3 credentials are discovered, leading to access to a misconfigured S3 bucket containing an `id_ed25519` SSH private key. The key’s passphrase is cracked, enabling SSH access to the target system.
+
+Privilege escalation is achieved by abusing a misconfigured `sudo` rule involving the `facter` binary, resulting in full system compromise.
+
+---
+
+## 🧭 Attack Path Overview
+
+```text
+Web Application (Camaleon CMS)
+        ↓
+Admin Registration Abuse
+        ↓
+Privilege Escalation (CMS Exploit)
+        ↓
+AWS Credentials Discovery
+        ↓
+S3 Bucket Access
+        ↓
+SSH Key Exfiltration
+        ↓
+User Access (SSH)
+        ↓
+Privilege Escalation (sudo facter)
+        ↓
+Root Access
 
 ## 🌐 Host Mapping
 
