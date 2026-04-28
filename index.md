@@ -1,8 +1,8 @@
 ---
-
 layout: default
 title: Costabo1 Portfolio
--------------------------
+---
+
 
 <style>
 body {
@@ -11,8 +11,7 @@ body {
   text-align: center;
 }
 
-/* ================= HERO ================= */
-
+/* HERO */
 .hero {
   padding: 60px 20px 20px;
 }
@@ -25,14 +24,13 @@ body {
   color: #9ca3af;
 }
 
-/* ================= PROFILE ================= */
-
+/* PROFILE */
 .profile-img {
   width: 420px;
   height: 420px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid #60a5fa; /* FIXED */
+  border: 5px solid #60a5fa;
   cursor: pointer;
 
   box-shadow: 0 0 15px #60a5fa, 0 4px 15px rgba(0,0,0,0.4);
@@ -53,15 +51,14 @@ body {
     0 0 80px rgba(168, 85, 247, 0.5);
 }
 
-/* Pulse */
+/* Pulse animation */
 @keyframes socPulse {
   0% { box-shadow: 0 0 10px #60a5fa; }
   50% { box-shadow: 0 0 30px #60a5fa; }
   100% { box-shadow: 0 0 10px #60a5fa; }
 }
 
-/* ================= SECTION ================= */
-
+/* SECTION */
 .section {
   padding: 60px 20px;
 }
@@ -70,8 +67,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* ================= CARDS ================= */
-
+/* CARDS */
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -87,19 +83,19 @@ body {
   transition: 0.3s;
 }
 
-/* HTB (red) */
+/* HTB */
 .card-htb:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 15px rgb(220,20,60), 0 0 30px rgba(220,20,60,0.4);
 }
 
-/* LetsDefend (cyan) */
+/* LetsDefend */
 .card-ld:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 15px rgb(0,255,255), 0 0 30px rgba(0,255,255,0.4);
 }
 
-/* Research Lab (orange/yellow) */
+/* Research Lab */
 .card-lab:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 15px rgb(255,165,0), 0 0 30px rgba(255,165,0,0.5);
@@ -110,8 +106,7 @@ body {
   text-decoration: none;
 }
 
-/* ================= SKILLS ================= */
-
+/* SKILLS */
 .skills {
   display: flex;
   flex-wrap: wrap;
@@ -131,7 +126,7 @@ body {
 <!-- HERO -->
 
 <div class="hero">
-  <img class="profile-img" src="assets/images/mewSP.jpg" alt="Profile">
+  <img class="profile-img" src="assets/images/mewSP.jpg" alt="Profile Image">
   <h1>🛡️ Costabo1</h1>
   <p>Penetration Testing • SOC Analysis • Malware Research</p>
 </div>
