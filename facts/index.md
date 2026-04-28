@@ -2,9 +2,15 @@
 
 ##  Overview
 
-Facts is an easy-difficulty machine involving:
+Facts is an easy-difficulty machine that demonstrates a multi-stage attack chain involving web exploitation, cloud misconfiguration, credential access, and privilege escalation.
 
-- Web exploitation (Camaleon CMS)
+Initial access is obtained by identifying an exposed /admin/register endpoint on a Camaleon CMS 2.9.0 instance, which allows arbitrary user registration. A known vulnerability in the CMS is then exploited to escalate privileges and gain administrative access.
+
+During post-exploitation, AWS S3 credentials are discovered, leading to access to a misconfigured S3 bucket. This bucket contains an id_ed25519 SSH private key. The key’s passphrase is successfully cracked, enabling SSH access to the target system.
+
+Privilege escalation is achieved by abusing a misconfigured sudo rule involving the facter binary, allowing execution of commands with elevated privileges and resulting in full system compromise.
+
+- Web exploitation (Camaleon CMS 2.9.0)
 - Cloud misconfiguration (AWS S3)
 - SSH key extraction
 - Linux privilege escalation (facter abuse)
