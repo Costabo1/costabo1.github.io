@@ -2,7 +2,7 @@
 
 layout: default
 title: Costabo1 Portfolio
--------------------------
+---
 
 <style>
 body {
