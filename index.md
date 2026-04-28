@@ -32,7 +32,7 @@ body {
   height: 420px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid #60a5fa;
+  border: 5px solid #60a5fa; /* FIXED */
   cursor: pointer;
 
   box-shadow: 0 0 15px #60a5fa, 0 4px 15px rgba(0,0,0,0.4);
@@ -87,7 +87,7 @@ body {
   transition: 0.3s;
 }
 
-/* HTB (crimson red) */
+/* HTB (red) */
 .card-htb:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 15px rgb(220,20,60), 0 0 30px rgba(220,20,60,0.4);
@@ -99,7 +99,7 @@ body {
   box-shadow: 0 0 15px rgb(0,255,255), 0 0 30px rgba(0,255,255,0.4);
 }
 
-/* NEW CARD (orange/yellow glow) */
+/* Research Lab (orange/yellow) */
 .card-lab:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 15px rgb(255,165,0), 0 0 30px rgba(255,165,0,0.5);
@@ -131,7 +131,7 @@ body {
 <!-- HERO -->
 
 <div class="hero">
-  <img class="profile-img" src="assets/images/mewSP.jpg">
+  <img class="profile-img" src="assets/images/mewSP.jpg" alt="Profile">
   <h1>🛡️ Costabo1</h1>
   <p>Penetration Testing • SOC Analysis • Malware Research</p>
 </div>
