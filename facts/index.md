@@ -322,10 +322,21 @@ description: "HackTheBox writeup for the Facts machine by Costabo1"
   <div class="cell"><div class="label">Status</div><div class="value">Retired</div></div>
   <div class="cell"><div class="label">Author</div><div class="value">Costabo1</div></div>
 </div>
-
+The objective of this machine is to gain initial access through a vulnerable web application, escalate privileges via cloud misconfiguration (AWS S3), and ultimately achieve root access through a Linux privilege escalation vector.
 <span class="icon">🔭</span> Overview
 
-Short summary of what this box is about — what makes it interesting, what core skill it tests, and what you'll learn from it. Keep this to 2–3 sentences.
+Facts is an easy-difficulty machine demonstrating a full attack chain:
+
+- Web exploitation (Camaleon CMS 2.9.0)
+- Cloud misconfiguration (AWS S3)
+- Credential exposure (SSH key leakage)
+- Privilege escalation (sudo facter abuse)
+
+Initial access is achieved via an exposed `/admin/register` endpoint allowing user creation, followed by exploitation of a CMS vulnerability to gain administrative access.
+
+Post-exploitation reveals AWS credentials, which lead to an exposed S3 bucket containing an SSH private key. The key is cracked and used for SSH access.
+
+Privilege escalation is achieved by abusing a misconfigured `sudo` rule involving the `facter` binary.
 
 <!-- Difficulty visual -->
 <div class="diff-bar">
@@ -339,22 +350,31 @@ Short summary of what this box is about — what makes it interesting, what core
   <li>curl</li>
   <li>burpsuite</li>
   <li>netcat</li>
-  <li>linpeas</li>
+ 
   <!-- Add or remove tools as needed -->
 </ul>
 
 <span class="icon">🔍</span> Enumeration
 Port Scan
 bashnmap -sC -sV -oN facts.nmap 10.10.xx.xx
+
 # Paste your nmap output here
+Nmap scan report for 10.129.35.249
+Host is up (0.050s latency).
+Not shown: 998 closed tcp ports (conn-refused)
 PORT   STATE SERVICE VERSION
-22/tcp open  ssh     OpenSSH 8.2p1
-80/tcp open  http    Apache httpd 2.4.41
-Web Enumeration
+22/tcp open  ssh     OpenSSH 9.9p1 Ubuntu 3ubuntu3.2 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 4d:d7:b2:8c:d4:df:57:9c:a4:2f:df:c6:e3:01:29:89 (ECDSA)
+|_  256 a3:ad:6b:2f:4a:bf:6f:48:ac:81:b9:45:3f:de:fb:87 (ED25519)
+80/tcp open  http    nginx 1.26.3 (Ubuntu)
+|_http-title: Did not follow redirect to http://facts.htb/
+|_http-server-header: nginx/1.26.3 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Describe what you found on the web service — directories, interesting endpoints, technologies, etc.
 
-bashgobuster dir -u http://10.10.xx.xx -w /usr/share/wordlists/dirb/common.txt
+bashgobuster dir -u http://10.129.35.24 -w /usr/share/wordlists/dirb/common.txt
 <div class="callout info">
   <span class="callout-icon">ℹ️</span>
   <div class="callout-body">
