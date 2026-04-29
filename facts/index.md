@@ -494,10 +494,13 @@ sudo /usr/bin/facter --custom-dir /tmp
 ```
 
 We obtained the root's shell 
-# whoami
+ 
+```bas 
+ whoami
+``` 
 root
-# cd /root
-# ls
+ cd /root
+ ls
 minio-binaries	ministack  root.txt  snap
 
 
