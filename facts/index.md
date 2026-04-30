@@ -238,6 +238,16 @@ body {
   .chain-node { font-size: .86rem; }
   .prose p { margin-bottom: 1rem; }
 }
+
+  /* ── Image zoom lightbox ─────────────────────── */
+.zoomable { cursor: zoom-in; transition: opacity .2s; }
+.zoomable:hover { opacity: .85; }
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 9999; align-items: center; justify-content: center; padding: 1.5rem; }
+.lightbox:target { display: flex; }
+.lightbox img { max-width: 100%; max-height: 90vh; border-radius: 8px; box-shadow: 0 0 60px rgba(0,255,157,.15); }
+.lightbox-close { position: absolute; top: 1.25rem; right: 1.5rem; color: var(--muted); font-family: var(--mono); font-size: .85rem; text-decoration: none; letter-spacing: .05em; }
+.lightbox-close:hover { color: var(--accent); }
+
 </style>
 
 <!-- HERO -->
@@ -369,11 +379,16 @@ body {
   <p><strong>CVE-2025-2304</strong> affects Camaleon CMS 2.9.0 and allows any authenticated user to escalate their permissions to admin level by manipulating certain CMS role parameters.</p>
 </div>
 
-<img src="/assets/htb/facts/factBurp.png"
-     alt="Burp screenshot"
-     style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
-
-<div class="prose">
+<a href="#zoom-burp">
+  <img class="zoomable" src="/assets/htb/factBurp.png"
+       alt="Burp screenshot"
+       style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
+</a>
+<div class="lightbox" id="zoom-burp">
+  <a class="lightbox-close" href="#">✕ close</a>
+  <img src="/assets/htb/factBurp.png" alt="Burp screenshot">
+</div>
+  
   <p>After exploiting this, the <code>mew1222</code> account now has full admin access — including site configuration, file management, and the cloud storage settings panel where things get very interesting.</p>
 </div>
 
@@ -382,11 +397,17 @@ body {
   <p>Inside the admin panel under storage settings, AWS S3 credentials were already populated with live values:</p>
 </div>
 
-<img src="/assets/htb/facts/adminpannel.png"
-     alt="Admin panel screenshot"
-     style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
-
-<table class="cred-table">
+<!-- Admin panel screenshot -->
+<a href="#zoom-admin">
+  <img class="zoomable" src="/assets/htb/adminpannel.png"
+       alt="Admin panel screenshot"
+       style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
+</a>
+<div class="lightbox" id="zoom-admin">
+  <a class="lightbox-close" href="#">✕ close</a>
+  <img src="/assets/htb/adminpannel.png" alt="Admin panel screenshot">
+</div>
+  
   <tr><th>Field</th><th>Value</th></tr>
   <tr><td>Access Key</td><td>AKIAD337D13639BD95BE</td></tr>
   <tr><td>Secret Key</td><td>v9WTmIuNeeq4L5s72WobV6CQs6HIJVkrq7NdRpZb</td></tr>
