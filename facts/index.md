@@ -268,7 +268,34 @@ body {
            style="max-width: 100%; width: 420px; border-radius: 8px; border: 1px solid var(--border);">
     </div>
 
-  </div>
+<!-- Zoom script — place once near bottom of content-wrap -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.zoomable').forEach(function (img) {
+    img.addEventListener('click', function () {
+      var box = document.getElementById(this.getAttribute('data-target'));
+      box.style.display = 'flex';
+    });
+  });
+  document.querySelectorAll('.lightbox-close').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      this.closest('div').style.display = 'none';
+    });
+  });
+  document.querySelectorAll('[id^="zoom-"]').forEach(function (box) {
+    box.addEventListener('click', function (e) {
+      if (e.target === this) this.style.display = 'none';
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('[id^="zoom-"]').forEach(function (box) {
+        box.style.display = 'none';
+      });
+    }
+  });
+});
+</script>
 
 <div class="content-wrap">
 
@@ -380,14 +407,15 @@ body {
 </div>
 
 <!-- Burp screenshot -->
-<img class="zoomable" src="/assets/htb/facts/factBurp.png"
+<img class="zoomable"
+     src="/assets/htb/facts/factBurp.png"
      alt="Burp screenshot"
-     onclick="openLightbox('zoom-burp')"
-     style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
-<div class="lightbox" id="zoom-burp">
-  <span class="lightbox-close" onclick="closeLightbox()">✕ close</span>
-  <img src="/assets/htb/facts/factBurp.png" alt="Burp screenshot">
-</div>
+     data-target="zoom-burp"
+     style="max-width:100%;border-radius:6px;border:1px solid var(--border);margin:1rem 0 2rem;cursor:zoom-in;">
+<div id="zoom-burp" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;padding:1.5rem;">
+  <span style="position:absolute;top:1.25rem;right:1.5rem;color:#6b7280;font-family:monospace;font-size:.85rem;cursor:pointer;" class="lightbox-close">✕ close</span>
+  <img src="/assets/htb/facts/factBurp.png" style="max-width:150%;max-height:135vh;border-radius:8px;">
+
 </div>
   
   <p>After exploiting this, the <code>mew1222</code> account now has full admin access — including site configuration, file management, and the cloud storage settings panel where things get very interesting.</p>
@@ -399,13 +427,15 @@ body {
 </div>
 
 <!-- Admin panel screenshot -->
-<img class="zoomable" src="/assets/htb/facts/adminpannel.png"
+<img class="zoomable"
+     src="/assets/htb/facts/adminpannel.png"
      alt="Admin panel screenshot"
-     onclick="openLightbox('zoom-admin')"
-     style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
-<div class="lightbox" id="zoom-admin">
-  <span class="lightbox-close" onclick="closeLightbox()">✕ close</span>
-  <img src="/assets/htb/facts/adminpannel.png" alt="Admin panel screenshot">
+     data-target="zoom-admin"
+     style="max-width:100%;border-radius:6px;border:1px solid var(--border);margin:1rem 0 2rem;cursor:zoom-in;">
+<div id="zoom-admin" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;padding:1.5rem;">
+  <span style="position:absolute;top:1.25rem;right:1.5rem;color:#6b7280;font-family:monospace;font-size:.85rem;cursor:pointer;" class="lightbox-close">✕ close</span>
+  <img src="/assets/htb/facts/adminpannel.png" style="max-width:150%;max-height:135vh;border-radius:8px;">
+
 
 </div>
   
