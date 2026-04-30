@@ -362,26 +362,37 @@ body {
 
   <hr class="divider">
 
-  <!-- ═══ FOOTHOLD ═══ -->
-  <h2 class="section-heading">⚡ Initial Foothold</h2>
+<h2 class="section-heading">⚡ Initial Foothold</h2>
 
-  <h3 class="sub-heading">Step 1 — CMS Privilege Escalation (CVE-2025-2304)</h3>
-  <div class="prose">
-    <p><strong>CVE-2025-2304</strong> affects Camaleon CMS 2.9.0 and allows any authenticated user to escalate their permissions to admin level by manipulating certain CMS role parameters.</p>
-    <p>After exploiting this, the <code>mew1222</code> account now has full admin access — including site configuration, file management, and the cloud storage settings panel where things get very interesting.</p>
-  </div>
+<h3 class="sub-heading">Step 1 — CMS Privilege Escalation (CVE-2025-2304)</h3>
+<div class="prose">
+  <p><strong>CVE-2025-2304</strong> affects Camaleon CMS 2.9.0 and allows any authenticated user to escalate their permissions to admin level by manipulating certain CMS role parameters.</p>
+</div>
 
-  <h3 class="sub-heading">Step 2 — AWS Credentials Exposed in the Admin Panel</h3>
-  <div class="prose">
-    <p>Inside the admin panel under storage settings, AWS S3 credentials were already populated with live values:</p>
-  </div>
-  <table class="cred-table">
-    <tr><th>Field</th><th>Value</th></tr>
-    <tr><td>Access Key</td><td>AKIAD337D13639BD95BE</td></tr>
-    <tr><td>Secret Key</td><td>v9WTmIuNeeq4L5s72WobV6CQs6HIJVkrq7NdRpZb</td></tr>
-    <tr><td>Region</td><td>us-east-1</td></tr>
-    <tr><td>Endpoint</td><td>http://facts.htb:54321</td></tr>
-  </table>
+<img src="/assets/htb/factBurp.png"
+     alt="Burp screenshot"
+     style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
+
+<div class="prose">
+  <p>After exploiting this, the <code>mew1222</code> account now has full admin access — including site configuration, file management, and the cloud storage settings panel where things get very interesting.</p>
+</div>
+
+<h3 class="sub-heading">Step 2 — AWS Credentials Exposed in the Admin Panel</h3>
+<div class="prose">
+  <p>Inside the admin panel under storage settings, AWS S3 credentials were already populated with live values:</p>
+</div>
+
+<img src="/assets/htb/adminpannel.png"
+     alt="Admin panel screenshot"
+     style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
+
+<table class="cred-table">
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td>Access Key</td><td>AKIAD337D13639BD95BE</td></tr>
+  <tr><td>Secret Key</td><td>v9WTmIuNeeq4L5s72WobV6CQs6HIJVkrq7NdRpZb</td></tr>
+  <tr><td>Region</td><td>us-east-1</td></tr>
+  <tr><td>Endpoint</td><td>http://facts.htb:54321</td></tr>
+</table>
   <div class="prose">
     <p>The endpoint points to a local <strong>MinIO</strong> instance — a self-hosted S3-compatible object storage server running on port 54321. With these keys we can interact with it exactly like a real AWS account.</p>
   </div>
