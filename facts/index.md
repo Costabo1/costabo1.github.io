@@ -251,6 +251,15 @@ body {
     <h1>🧠 HackTheBox — <span>Facts</span></h1>
     <p class="subtitle">costabo1 &nbsp;·&nbsp; writeup &nbsp;·&nbsp; 2025</p>
   </div>
+
+   <div style="margin-top: 1.5rem;">
+      <img src="/assets/htb/facts/htbfacts.png"
+           alt="HackTheBox Facts machine card"
+           style="max-width: 100%; width: 420px; border-radius: 8px; border: 1px solid var(--border);">
+    </div>
+
+  </div>
+</div>
 </div>
 
 <div class="content-wrap">
