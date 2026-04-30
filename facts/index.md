@@ -243,9 +243,9 @@ body {
 .zoomable { cursor: zoom-in; transition: opacity .2s; }
 .zoomable:hover { opacity: .85; }
 .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 9999; align-items: center; justify-content: center; padding: 1.5rem; }
-.lightbox:target { display: flex; }
-.lightbox img { max-width: 100%; max-height: 90vh; border-radius: 8px; box-shadow: 0 0 60px rgba(0,255,157,.15); }
-.lightbox-close { position: absolute; top: 1.25rem; right: 1.5rem; color: var(--muted); font-family: var(--mono); font-size: .85rem; text-decoration: none; letter-spacing: .05em; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 150%; max-height: 135vh; border-radius: 8px; box-shadow: 0 0 60px rgba(0,255,157,.15); }
+.lightbox-close { position: absolute; top: 1.25rem; right: 1.5rem; color: var(--muted); font-family: var(--mono); font-size: .85rem; text-decoration: none; letter-spacing: .05em; cursor: pointer; }
 .lightbox-close:hover { color: var(--accent); }
 
 </style>
@@ -379,14 +379,15 @@ body {
   <p><strong>CVE-2025-2304</strong> affects Camaleon CMS 2.9.0 and allows any authenticated user to escalate their permissions to admin level by manipulating certain CMS role parameters.</p>
 </div>
 
-<a href="#zoom-burp">
-  <img class="zoomable" src="/assets/htb/facts/factBurp.png"
-       alt="Burp screenshot"
-       style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
-</a>
+<!-- Burp screenshot -->
+<img class="zoomable" src="/assets/htb/facts/factBurp.png"
+     alt="Burp screenshot"
+     onclick="openLightbox('zoom-burp')"
+     style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
 <div class="lightbox" id="zoom-burp">
-  <a class="lightbox-close" href="#">✕ close</a>
+  <span class="lightbox-close" onclick="closeLightbox()">✕ close</span>
   <img src="/assets/htb/facts/factBurp.png" alt="Burp screenshot">
+</div>
 </div>
   
   <p>After exploiting this, the <code>mew1222</code> account now has full admin access — including site configuration, file management, and the cloud storage settings panel where things get very interesting.</p>
@@ -398,14 +399,14 @@ body {
 </div>
 
 <!-- Admin panel screenshot -->
-<a href="#zoom-admin">
-  <img class="zoomable" src="/assets/htb/facts/adminpannel.png"
-       alt="Admin panel screenshot"
-       style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
-</a>
+<img class="zoomable" src="/assets/htb/facts/adminpannel.png"
+     alt="Admin panel screenshot"
+     onclick="openLightbox('zoom-admin')"
+     style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
 <div class="lightbox" id="zoom-admin">
-  <a class="lightbox-close" href="#">✕ close</a>
+  <span class="lightbox-close" onclick="closeLightbox()">✕ close</span>
   <img src="/assets/htb/facts/adminpannel.png" alt="Admin panel screenshot">
+
 </div>
   
   <tr><th>Field</th><th>Value</th></tr>
