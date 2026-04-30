@@ -248,7 +248,7 @@ body {
       <span class="badge badge-linux">Linux</span>
       <span class="badge badge-retired">Retired</span>
     </div>
-    <h1>🧠 HackTheBox — <span>Facts</span></h1>
+    <h1>👾 HackTheBox — <span>Facts</span></h1>
     <p class="subtitle">costabo1 &nbsp;·&nbsp; writeup &nbsp;·&nbsp; 2025</p>
   </div>
 
@@ -313,7 +313,7 @@ body {
   <h2 class="section-heading">🛠️ Tools Used</h2>
   <ul class="tool-list">
     <li>nmap</li><li>gobuster</li><li>curl</li><li>burpsuite</li>
-    <li>aws-cli</li><li>john</li><li>ssh</li><li>linpeas</li>
+    <li>aws-cli</li><li>john</li><li>ssh</li><li>GTFOBins</li>
   </ul>
 
   <hr class="divider">
