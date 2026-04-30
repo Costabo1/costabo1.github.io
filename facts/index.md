@@ -380,13 +380,13 @@ body {
 </div>
 
 <a href="#zoom-burp">
-  <img class="zoomable" src="/assets/htb/factBurp.png"
+  <img class="zoomable" src="/assets/htb/facts/factBurp.png"
        alt="Burp screenshot"
        style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
 </a>
 <div class="lightbox" id="zoom-burp">
   <a class="lightbox-close" href="#">✕ close</a>
-  <img src="/assets/htb/factBurp.png" alt="Burp screenshot">
+  <img src="/assets/htb/facts/factBurp.png" alt="Burp screenshot">
 </div>
   
   <p>After exploiting this, the <code>mew1222</code> account now has full admin access — including site configuration, file management, and the cloud storage settings panel where things get very interesting.</p>
@@ -399,13 +399,13 @@ body {
 
 <!-- Admin panel screenshot -->
 <a href="#zoom-admin">
-  <img class="zoomable" src="/assets/htb/adminpannel.png"
+  <img class="zoomable" src="/assets/htb/facts/adminpannel.png"
        alt="Admin panel screenshot"
        style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
 </a>
 <div class="lightbox" id="zoom-admin">
   <a class="lightbox-close" href="#">✕ close</a>
-  <img src="/assets/htb/adminpannel.png" alt="Admin panel screenshot">
+  <img src="/assets/htb/facts/adminpannel.png" alt="Admin panel screenshot">
 </div>
   
   <tr><th>Field</th><th>Value</th></tr>
