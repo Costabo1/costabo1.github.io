@@ -259,8 +259,6 @@ body {
     </div>
 
   </div>
-</div>
-</div>
 
 <div class="content-wrap">
 
@@ -270,7 +268,7 @@ body {
     <div class="cell"><div class="lbl">Difficulty</div><div class="val">Easy</div></div>
     <div class="cell"><div class="lbl">Points</div><div class="val">20</div></div>
     <div class="cell"><div class="lbl">CVEs</div><div class="val">2025-2304 · 2024-46987</div></div>
-    <div class="cell"><div class="lbl">Status</div><div class="val">Retired</div></div>
+    <div class="cell"><div class="lbl">Status</div><div class="val">N/A</div></div>
     <div class="cell"><div class="lbl">Author</div><div class="val">Costabo1</div></div>
   </div>
 
