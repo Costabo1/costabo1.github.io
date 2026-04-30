@@ -369,7 +369,7 @@ body {
   <p><strong>CVE-2025-2304</strong> affects Camaleon CMS 2.9.0 and allows any authenticated user to escalate their permissions to admin level by manipulating certain CMS role parameters.</p>
 </div>
 
-<img src="/assets/htb/factBurp.png"
+<img src="/assets/htb/facts/factBurp.png"
      alt="Burp screenshot"
      style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
 
@@ -382,7 +382,7 @@ body {
   <p>Inside the admin panel under storage settings, AWS S3 credentials were already populated with live values:</p>
 </div>
 
-<img src="/assets/htb/adminpannel.png"
+<img src="/assets/htb/facts/adminpannel.png"
      alt="Admin panel screenshot"
      style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); margin: 1rem 0 2rem;">
 
