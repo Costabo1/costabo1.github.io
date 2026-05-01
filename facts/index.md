@@ -548,13 +548,13 @@ minio-binaries  ministack  root.txt  snap</div>
     </div>
   </div>
 <img class="zoomable"
-     src="/assets/htb/factrootblurr.png"
+     src="/assets/htb/facts/factrootblurr.png"
      alt="Root shell screenshot"
      data-target="zoom-factroot"
      style="max-width:100%;border-radius:6px;border:1px solid var(--border);margin:1rem 0 2rem;cursor:zoom-in;">
 <div id="zoom-factroot" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;padding:1.5rem;">
   <span class="lightbox-close" style="position:absolute;top:1.25rem;right:1.5rem;color:#6b7280;font-family:monospace;font-size:.85rem;cursor:pointer;">✕ close</span>
-  <img src="/assets/htb/factrootblurr.png"
+  <img src="/assets/htb/facts/factrootblurr.png"
        alt="Root shell screenshot"
        style="max-width:125%;max-height:112.5vh;border-radius:8px;">
 </div>
