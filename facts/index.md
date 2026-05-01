@@ -408,13 +408,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- Burp screenshot -->
 <img class="zoomable"
-     src="/assets/htb/facts/factBurp.png"
+     src="/assets/htb/facts/factBurpc.png"
      alt="Burp screenshot"
      data-target="zoom-burp"
      style="max-width:100%;border-radius:6px;border:1px solid var(--border);margin:1rem 0 2rem;cursor:zoom-in;">
 <div id="zoom-burp" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;padding:1.5rem;">
   <span style="position:absolute;top:1.25rem;right:1.5rem;color:#6b7280;font-family:monospace;font-size:.85rem;cursor:pointer;" class="lightbox-close">✕ close</span>
-  <img src="/assets/htb/facts/factBurp.png" style="max-width:150%;max-height:135vh;border-radius:8px;">
+  <img src="/assets/htb/facts/factBurpc.png" style="max-width:150%;max-height:135vh;border-radius:8px;">
 
 </div>
   
