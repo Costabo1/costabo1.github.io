@@ -417,16 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <img src="/assets/htb/facts/factBurpc.png" style="max-width:150%;max-height:135vh;border-radius:8px;">
 
 </div>
-  
-  <p>After exploiting this, the <code>mew1222</code> account now has full admin access — including site configuration, file management, and the cloud storage settings panel where things get very interesting.</p>
-</div>
 
-<h3 class="sub-heading">Step 2 — AWS Credentials Exposed in the Admin Panel</h3>
-<div class="prose">
-  <p>Inside the admin panel under storage settings, AWS S3 credentials were already populated with live values:</p>
-</div>
-
-<!-- Admin panel screenshot -->
 <img class="zoomable"
      src="/assets/htb/facts/adminpannel.png"
      alt="Admin panel screenshot"
@@ -435,20 +426,24 @@ document.addEventListener('DOMContentLoaded', function () {
 <div id="zoom-admin" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;padding:1.5rem;">
   <span style="position:absolute;top:1.25rem;right:1.5rem;color:#6b7280;font-family:monospace;font-size:.85rem;cursor:pointer;" class="lightbox-close">✕ close</span>
   <img src="/assets/htb/facts/adminpannel.png" style="max-width:150%;max-height:135vh;border-radius:8px;">
-
-
 </div>
   
+<h3 class="sub-heading">Step 2 — AWS Credentials Exposed in the Admin Panel</h3>
+<div class="prose">
+  <p>Inside the admin panel under storage settings, AWS S3 credentials were already populated with live values:</p>
+</div>
+
+<table class="cred-table">
   <tr><th>Field</th><th>Value</th></tr>
   <tr><td>Access Key</td><td>AKIAD337D13639BD95BE</td></tr>
   <tr><td>Secret Key</td><td>v9WTmIuNeeq4L5s72WobV6CQs6HIJVkrq7NdRpZb</td></tr>
   <tr><td>Region</td><td>us-east-1</td></tr>
   <tr><td>Endpoint</td><td>http://facts.htb:54321</td></tr>
 </table>
-  <div class="prose">
-    <p>The endpoint points to a local <strong>MinIO</strong> instance — a self-hosted S3-compatible object storage server running on port 54321. With these keys we can interact with it exactly like a real AWS account.</p>
-  </div>
 
+<div class="prose">
+  <p>The endpoint points to a local <strong>MinIO</strong> instance — a self-hosted S3-compatible object storage server running on port 54321. With these keys we can interact with it exactly like a real AWS account.</p>
+</div>
   <h3 class="sub-heading">Step 3 — S3 Bucket Enumeration</h3>
   <div class="prose">
     <p>Configure the AWS CLI with the recovered credentials and list all available buckets:</p>
