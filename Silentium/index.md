@@ -328,36 +328,67 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <!-- OVERVIEW -->
   <h2 class="section-heading">🔭 Overview</h2>
-  <div class="prose">
-    <p>Silentium is an easy-difficulty Linux machine built around a realistic three-CVE attack chain targeting modern AI tooling and a self-hosted git service.</p>
-    <p>The path starts with subdomain enumeration revealing a Flowise AI instance running version 3.0.5. An unauthenticated password reset token leak allows account takeover of a valid user, which unlocks a CustomMCP injection vulnerability for remote code execution inside a Docker container. Credential reuse discovered in the container environment variables pivots us to SSH as <code>ben</code> on the host. From there, a locally bound Gogs git service running as root is exposed via port forwarding and exploited through a symlink git config injection to achieve full system compromise.</p>
-    <p><strong>Attack chain at a glance:</strong></p>
+ <div class="prose">
+  <p>Silentium is an easy-difficulty Linux machine built around a realistic three-CVE attack chain targeting modern AI tooling and a self-hosted git service.</p>
+  <p>The path starts with subdomain enumeration revealing a Flowise AI instance running version 3.0.5. An unauthenticated password reset token leak allows account takeover of a valid user, which unlocks a CustomMCP injection vulnerability for remote code execution inside a Docker container. Credential reuse discovered in the container environment variables pivots us to SSH as <code>ben</code> on the host. From there, a locally bound Gogs git service running as root is exposed via port forwarding and exploited through a symlink git config injection to achieve full system compromise.</p>
+  <p><strong>Attack chain at a glance:</strong></p>
+</div>
+
+{% raw %}
+<div style="margin: 1.5rem 0 2.5rem;">
+  <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+    <div style="font-size: 1.8rem; flex-shrink: 0; color: #05A87B; font-weight: bold; width: 40px; text-align: center;">①</div>
+    <div class="chain-node" style="flex: 1;">
+      <div class="tag">Recon</div>
+      Nmap finds ports 22 and 80 → <code>silentium.htb</code> → manual browsing identifies <code>Ben</code> as Head of Financial Systems (likely system user)
+    </div>
   </div>
 
-  <div class="chain">
-    <div class="chain-item">
-      <div class="chain-node"><div class="tag">Step 1 — Recon</div>Nmap finds ports 22 and 80 → <code>silentium.htb</code> → manual browsing identifies <code>Ben</code> as a likely system user</div>
-      <div class="chain-connector"></div>
+  <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+    <div style="font-size: 1.8rem; flex-shrink: 0; color: #05A87B; font-weight: bold; width: 40px; text-align: center;">②</div>
+    <div class="chain-node" style="flex: 1;">
+      <div class="tag">Subdomain Discovery</div>
+      ffuf subdomain fuzzing reveals <code>staging.silentium.htb</code> running <strong>Flowise AI 3.0.5</strong>
     </div>
-    <div class="chain-item">
-      <div class="chain-node"><div class="tag">Step 2 — Subdomain Discovery</div>ffuf reveals <code>staging.silentium.htb</code> running <strong>Flowise AI 3.0.5</strong></div>
-      <div class="chain-connector"></div>
+  </div>
+
+  <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+    <div style="font-size: 1.8rem; flex-shrink: 0; color: #05A87B; font-weight: bold; width: 40px; text-align: center;">③</div>
+    <div class="chain-node" style="flex: 1;">
+      <div class="tag">CVE-2025-58434</div>
+      Unauthenticated password reset token leak → <code>tempToken</code> exposed in API response → reset <code>ben@silentium.htb</code> password to attacker-controlled value
     </div>
-    <div class="chain-item">
-      <div class="chain-node"><div class="tag">Step 3 — CVE-2025-58434</div>Unauthenticated password reset token leak → <code>tempToken</code> in API response → reset <code>ben@silentium.htb</code></div>
-      <div class="chain-connector"></div>
+  </div>
+
+  <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+    <div style="font-size: 1.8rem; flex-shrink: 0; color: #05A87B; font-weight: bold; width: 40px; text-align: center;">④</div>
+    <div class="chain-node" style="flex: 1;">
+      <div class="tag">CVE-2025-59528</div>
+      Authenticated CustomMCP node command injection → malicious payload executed inside Docker container as root
     </div>
-    <div class="chain-item">
-      <div class="chain-node"><div class="tag">Step 4 — CVE-2025-59528</div>Authenticated CustomMCP node injection → reverse shell inside Docker container</div>
-      <div class="chain-connector"></div>
+  </div>
+
+  <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+    <div style="font-size: 1.8rem; flex-shrink: 0; color: #05A87B; font-weight: bold; width: 40px; text-align: center;">⑤</div>
+    <div class="chain-node" style="flex: 1;">
+      <div class="tag">Credential Harvest</div>
+      Docker environment variables leak → <code>SMTP_PASSWORD</code> reused as Ben's SSH password on host machine → SSH shell as <code>ben</code> → <code>user.txt</code>
     </div>
-    <div class="chain-item">
-      <div class="chain-node"><div class="tag">Step 5 — Lateral Movement</div>Docker env leak → <code>SMTP_PASSWORD</code> reused as SSH password → shell on host → <code>user.txt</code></div>
-      <div class="chain-connector"></div>
+  </div>
+
+  <div style="display: flex; gap: 1rem; margin-bottom: 0;">
+    <div style="font-size: 1.8rem; flex-shrink: 0; color: #05A87B; font-weight: bold; width: 40px; text-align: center;">⑥</div>
+    <div class="chain-node" style="flex: 1;">
+      <div class="tag">CVE-2025-8110</div>
+      SSH port forward to internal Gogs → symlink git config injection → malicious <code>sshCommand</code> executed as root → reverse shell → <code>root.txt</code>
     </div>
-    <div class="chain-item">
-      <div class="chain-node"><div class="tag">Step 6 — CVE-2025-8110</div>SSH port forward → Gogs 0.13.0 symlink git config injection → root shell → <code>root.txt</code></div>
-    </div>
+  </div>
+</div>
+{% endraw %}
+
+  <div class="diff-bar">
+    <div class="track"><div class="fill" style="width:30%"></div></div>
+    <div class="lbl">Difficulty feel: Easy</div>
   </div>
 
   <div class="diff-bar">
@@ -596,15 +627,38 @@ root@silentium:~# cat root.txt</div>
   <hr class="divider">
 
   <!-- CVE SUMMARY -->
-  <h2 class="section-heading">🔬 CVE Summary</h2>
-  <table class="cred-table">
-    <tr><th>CVE</th><th>Component</th><th>Impact</th><th>Used For</th></tr>
-    <tr><td>CVE-2025-58434</td><td>Flowise &lt;= 3.0.5</td><td>Unauthenticated password reset token leak in API response</td><td>Account takeover of ben@silentium.htb</td></tr>
-    <tr><td>CVE-2025-59528</td><td>Flowise &lt;= 3.0.5</td><td>Authenticated CustomMCP node command injection</td><td>Reverse shell inside Docker container</td></tr>
-    <tr><td>CVE-2025-8110</td><td>Gogs 0.13.0</td><td>Symlink git config injection → RCE as git service user</td><td>Root shell via sshCommand injection</td></tr>
-  </table>
-
-  <hr class="divider">
+<h2 class="section-heading">🔬 CVE Summary</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+  <!-- CVE 1 -->
+  <div style="border: 1px solid var(--border); border-radius: 6px; padding: 1.25rem; background: var(--surface);">
+    <div style="font-family: var(--mono); color: #05A87B; font-weight: bold; margin-bottom: .5rem; font-size: .85rem;">CVE-2025-58434</div>
+    <div style="color: var(--muted); font-size: .85rem; margin-bottom: 1rem;"><strong>Flowise ≤ 3.0.5</strong></div>
+    <div style="color: var(--text); font-size: .9rem; line-height: 1.6;">
+      <strong>Impact:</strong> Unauthenticated password reset token leak in API response<br><br>
+      <strong>Used For:</strong> Account takeover of ben@silentium.htb
+    </div>
+  </div>
+  
+  <!-- CVE 2 -->
+  <div style="border: 1px solid var(--border); border-radius: 6px; padding: 1.25rem; background: var(--surface);">
+    <div style="font-family: var(--mono); color: #05A87B; font-weight: bold; margin-bottom: .5rem; font-size: .85rem;">CVE-2025-59528</div>
+    <div style="color: var(--muted); font-size: .85rem; margin-bottom: 1rem;"><strong>Flowise ≤ 3.0.5</strong></div>
+    <div style="color: var(--text); font-size: .9rem; line-height: 1.6;">
+      <strong>Impact:</strong> Authenticated CustomMCP node command injection<br><br>
+      <strong>Used For:</strong> Reverse shell inside Docker container
+    </div>
+  </div>
+  
+  <!-- CVE 3 -->
+  <div style="border: 1px solid var(--border); border-radius: 6px; padding: 1.25rem; background: var(--surface);">
+    <div style="font-family: var(--mono); color: #05A87B; font-weight: bold; margin-bottom: .5rem; font-size: .85rem;">CVE-2025-8110</div>
+    <div style="color: var(--muted); font-size: .85rem; margin-bottom: 1rem;"><strong>Gogs 0.13.0</strong></div>
+    <div style="color: var(--text); font-size: .9rem; line-height: 1.6;">
+      <strong>Impact:</strong> Symlink git config injection → RCE as git service user<br><br>
+      <strong>Used For:</strong> Root shell via sshCommand injection
+    </div>
+  </div>
+</div>
 
   <!-- KEY TAKEAWAYS -->
   <h2 class="section-heading">📝 Key Takeaways</h2>
