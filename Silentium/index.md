@@ -11,9 +11,9 @@ description: "HackTheBox writeup for the Silentium machine by Costabo1"
   --bg:      #080c0a;
   --surface: #0d1410;
   --border:  #172419;
-  --accent:  #1a775d;
-  --accent2: #22a078;
-  --accent3: #1a775d;
+  --accent:  #05A87B;
+  --accent2: #05A87B;
+  --accent3: #05A87B;
   --muted:   #4d7060;
   --text:    #b8ccc2;
   --heading: #e0ede6;
@@ -34,7 +34,7 @@ body {
   background: var(--bg) !important;
   color: var(--text) !important;
   font-family: var(--sans) !important;
-  font-size: 18px !important;
+  font-size: 21px !important;
   line-height: 1.9 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -82,7 +82,7 @@ body {
   text-transform: uppercase;
 }
 .badge-easy  { color: #1a775d; border-color: #1a775d; background: rgba(26,119,93,.1); }
-.badge-linux { color: #1a775d; border-color: #1a775d; background: rgba(26,119,93,.07); }
+.badge-linux { color: #0084d4; border-color: #0084d4; background: rgba(0,132,212,.07); }
 .badge-retired { color: var(--muted); border-color: var(--muted); background: rgba(77,112,96,.07); }
 
 .htb-hero h1 {
@@ -303,9 +303,16 @@ document.addEventListener('DOMContentLoaded', function () {
     <h1>👾 HackTheBox — <span>Silentium</span></h1>
     <p class="subtitle">costabo1 &nbsp;·&nbsp; writeup &nbsp;·&nbsp; 2025</p>
   </div>
+  </div>
+
+<div class="content-wrap" style="margin-top: -1.5rem;">
+  <img src="/assets/htb/silentium/silentium.png"
+       alt="HackTheBox Silentium machine card"
+       style="max-width: 100%; width: 420px; border-radius: 8px; border: 1px solid var(--border); margin: 1.5rem 0 2.5rem;">
 </div>
 
 <div class="content-wrap">
+
 
   <!-- Info grid -->
   <div class="info-grid">
