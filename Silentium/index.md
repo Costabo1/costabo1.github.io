@@ -391,11 +391,6 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="lbl">Difficulty feel: Easy</div>
   </div>
 
-  <div class="diff-bar">
-    <div class="track"><div class="fill" style="width:30%"></div></div>
-    <div class="lbl">Difficulty feel: Easy</div>
-  </div>
-
   <!-- TOOLS -->
   <h2 class="section-heading">🛠️ Tools Used</h2>
   <ul class="tool-list">
