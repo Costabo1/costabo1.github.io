@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 
 <div class="content-wrap" style="margin-top: -1.5rem;">
-  <img src="/assets/htb/silentium/silentium.png"
+  <img src="assets/slient/slientium.png"
        alt="HackTheBox Silentium machine card"
        style="max-width: 100%; width: 420px; border-radius: 8px; border: 1px solid var(--border); margin: 1.5rem 0 2.5rem;">
 </div>
