@@ -510,13 +510,13 @@ LLM_PROVIDER=nvidia-nim
 
   <h3 class="sub-heading">Step 5 — SSH as Ben → User Flag</h3>
   <div class="codeblock">ssh ben@10.129.36.184
-# Password: r04D!!_R4ge</div>
+# Password: r04*******</div>
   <div class="codeblock output">ben@silentium:~$</div>
   <div class="codeblock">cat /home/ben/user.txt</div>
   <div class="flag-block">
     <span class="fi">🏴</span>
     <span class="fl">user.txt</span>
-    <span class="fv">ca2580193b0607f5119480c830ec3515</span>
+    <span class="fv">ca2580************5</span>
   </div>
 
   <hr class="divider">
@@ -590,7 +590,7 @@ root@silentium:~# cat root.txt</div>
   <div class="flag-block">
     <span class="fi">🏁</span>
     <span class="fl">root.txt</span>
-    <span class="fv">9eaa1f1c15d98ae29c0a868107068b0f</span>
+    <span class="fv">9ea***********f</span>
   </div>
 
   <hr class="divider">
