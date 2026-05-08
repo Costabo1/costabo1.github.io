@@ -55,7 +55,7 @@ body::before {
 
 .hero h1 {
   font-size: clamp(32px, 5vw, 52px);
-  background: linear-gradient(135deg, #00ffc8, #60a5fa, #ec4899);
+  background: linear-gradient(135deg, #ec4899, #60a5fa, #00ffc8, #a78bfa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
