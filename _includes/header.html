@@ -43,9 +43,12 @@
 }
 
 .site-title {
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 800;
-  color: #00ffc8;
+  background: linear-gradient(135deg, #ec4899, #00ffc8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -54,7 +57,7 @@
 }
 
 .site-title:hover {
-  text-shadow: 0 0 15px #00ffc8;
+  filter: drop-shadow(0 0 15px #00ffc8);
 }
 
 .nav-links {
@@ -63,18 +66,21 @@
 }
 
 .nav-links a {
-  color: #9ca3af;
+  background: linear-gradient(135deg, #ec4899, #00ffc8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 6px;
   transition: all 0.3s;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .nav-links a:hover {
-  color: #00ffc8;
-  text-shadow: 0 0 10px rgba(0, 255, 200, 0.5);
+  filter: drop-shadow(0 0 8px #00ffc8);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
