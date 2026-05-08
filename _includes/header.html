@@ -1,0 +1,89 @@
+<header class="site-header">
+  <div class="site-header-inner">
+    <nav class="site-nav">
+      <a class="site-title" href="/">
+        <i class="fas fa-terminal"></i> Costabo1
+      </a>
+      <div class="nav-links">
+        <a href="https://github.com/Costabo1" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="/#about">
+          <i class="fas fa-user"></i> About
+        </a>
+        <a href="/#dashboard">
+          <i class="fas fa-shield-alt"></i> Portfolio
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+.site-header {
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
+  border-bottom: 2px solid #00ffc8;
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.1);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.site-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #00ffc8;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.site-title:hover {
+  text-shadow: 0 0 15px #00ffc8;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: #00ffc8;
+  text-shadow: 0 0 10px rgba(0, 255, 200, 0.5);
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 15px;
+  }
+  
+  .site-title {
+    font-size: 20px;
+  }
+}
+</style>
