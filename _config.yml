@@ -1,20 +1,17 @@
 title: Costabo1 Portfolio
 email: cu976733@gmail.com
-description: >- # Using a foldable block for cleaner multi-line support
+description: >-
   Penetration testing writeups and security research
-  
-# Deployment Info
+
 url: "https://costabo1.github.io"
-baseurl: "" 
+baseurl: ""
 
-# Theme Settings
 remote_theme: pages-themes/midnight@v0.2.0
-github_username: costabo1
 
-# Build Settings
 markdown: kramdown
 kramdown:
   input: GFM
 
 plugins:
   - jekyll-remote-theme
+  - jekyll-include-cache
