@@ -486,11 +486,11 @@ body {
 <div class="htb-hero">
   <div class="content-wrap inner">
     <div class="badge-row">
-      <span class="badge badge-medium">Medium</span>
+    <span class="badge badge-medium">Tier II</span>
       <span class="badge badge-linux">Linux</span>
       <span class="badge badge-module">Pivoting Module</span>
     </div>
-    <h1>🔀 HTB Pivoting — <span>Skill Assessment</span></h1>
+    <h1>🔀 HTB Academy — <span>Pivoting Skill Assessment</span></h1>
     <p class="subtitle">costabo1 &nbsp;·&nbsp; casual walkthrough &nbsp;·&nbsp; 2026</p>
   </div>
 </div>
@@ -793,7 +793,7 @@ Logon Time        : 5/17/2026 10:15:33 AM
   <table class="cred-table">
     <tr><th>User</th><th>Password</th><th>Domain</th><th>Source</th></tr>
     <tr><td>mlefay</td><td>Plain Human work!</td><td>INLANEFREIGHT</td><td>Plaintext note on Linux box</td></tr>
-    <tr><td>svc_backup</td><td>B@ckup2024!Sec</td><td>INLANEFREIGHT</td><td>LSASS dump via mimikatz</td></tr>
+    <tr><td>vfrank</td><td>Imply wet Unmasked!Sec</td><td>INLANEFREIGHT</td><td>LSASS dump via mimikatz</td></tr>
   </table>
 
   <hr class="divider">
